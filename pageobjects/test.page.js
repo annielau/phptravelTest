@@ -11,11 +11,24 @@ var testPage = Object.create(Page, {
 	loginField: {get: function(){return browser.element('input[name=username')}},
 	passwordField: {get: function(){return browser.element('input[name=password]')}},
 	loginButton: {get: function(){return browser.element('button[type="submit"]')}},
-	//grettingMessage: {get: function(){return browser.element('div  h3*=Hi,')}},
- 	//grettingMessage: {get: function(){return browser.element('div > h3 > RTL')}},
- 	//grettingMessage: {get: function(){return browser.element('div.container div.row div.row div.col-md-6.go-right.RTL h3.RTL')}},
- 	//grettingMessage: {get: function(){return browser.element('#text')}},
- 	grettingMEssage: {get: function(){return browser.getText('h3.RTL')}},
+    greetingMessage: {get: function(){return browser.element('h3.RTL')}},
+
+ 	verifyGreetingMessage: {
+		value: function () {
+			//var greeting = this.greetingMessage.getText();
+			var greetingMessage= browser.getText('h3.RTL');
+			expect (greetingMessage).to.have.string('Hi, Johny Smith');
+
+		},
+	},
+
+	waitForPageLoad: {
+		value: function (pageName) {
+			browser.waitUntil(function () {
+       		return browser.getTitle() === pageName}, 99999, 'expected different page');
+
+		},
+	},
 
 });
 

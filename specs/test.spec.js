@@ -24,13 +24,10 @@ describe ('it should open flight page', function(){
 		testPage.loginField.setValue('user@phptravels.com');
 		testPage.passwordField.setValue('demouser');
 		testPage.loginButton.click();
-		browser.waitUntil(function () {
-      			return browser.getTitle() === 'My Account'}, 99999, 
-      			'expected different page');
-	
+		testPage.waitForPageLoad('My Account');
 	    browser.waitForVisible('h3*=Hi,',9999);
-	    var greetingMessage= browser.getText('h3.RTL');
-		expect (greetingMessage).to.have.string('Hi, Johny Smith');
+	    testPage.verifyGreetingMessage();
+	    
 	
 	});
 
