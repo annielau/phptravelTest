@@ -11,7 +11,7 @@ var testPage = Object.create(Page, {
 	loginField: {get: function(){return browser.element('input[name=username')}},
 	passwordField: {get: function(){return browser.element('input[name=password]')}},
 	loginButton: {get: function(){return browser.element('button[type="submit"]')}},
-    greetingMessage: {get: function(){return browser.element('h3.RTL')}},
+    greetingMessage: {get: function(){return browser.element('h3*=Hi,')}},
 
  	verifyGreetingMessage: {
 		value: function () {
@@ -29,6 +29,15 @@ var testPage = Object.create(Page, {
 
 		},
 	},
+
+	waitForElementVisible: {
+		value: function (message) {
+			
+       		browser.waitForVisible(message,9999);
+
+		},
+	},
+
 
 });
 

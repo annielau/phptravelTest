@@ -25,7 +25,8 @@ describe ('it should open flight page', function(){
 		testPage.passwordField.setValue('demouser');
 		testPage.loginButton.click();
 		testPage.waitForPageLoad('My Account');
-	    browser.waitForVisible('h3*=Hi,',9999);
+		testPage.waitForElementVisible('h3*=Hi,');
+	    //testPage.waitForElementVisible(testPage.greetingMessage);
 	    testPage.verifyGreetingMessage();
 	    
 	
